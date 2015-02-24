@@ -1,0 +1,11 @@
+<h2>This is the public profile for: <%= @user.name %></h2>
+
+<strong>Only <%= pluralize(@items.count, "item") %> for now...</strong>
+
+<div>
+  <% @items.each do |item| %>
+      <p>
+        <%= item.media_item %>
+      </p>
+  <% end %>
+</div>

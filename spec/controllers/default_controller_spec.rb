@@ -1,16 +1,16 @@
 require 'rails_helper'
 
-describe SessionsController, type: :controller do
+describe DefaultController, type: :controller do
 
-  describe "GET new" do
+  describe "GET index" do
     it "returns http success" do
-      get :new
+      get :index
       expect(response).to have_http_status(:success)
     end
 
     it 'render the proper view' do
-      get :new
-      expect(respond_to).to render_template 'new'
+      get :index
+      expect(respond_to).to render_template 'index'
     end
   end
 end

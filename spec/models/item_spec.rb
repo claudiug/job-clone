@@ -7,6 +7,7 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  user_id    :integer
+#  active     :boolean          default("t")
 #
 
 require 'rails_helper'
@@ -33,5 +34,18 @@ describe Item do
     i = build(:item, media_item: "a")
     i.valid?
     expect(i.errors[:media_item]).to include("is too short (minimum is 10 characters)")
+  end
+
+  it 'has default value for active true' do
+    i = build(:item)
+    expect(i.active).to eq true
+  end
+
+  describe '#just_active' do
+    it 'return only the active items' do
+      item = create(:item)
+      item1 = create(:item, active: false)
+      expect(Item.just_active.size).to eq 1
+    end
   end
 end

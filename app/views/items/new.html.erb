@@ -1,0 +1,24 @@
+<p>Hello <%= @user.name %>, Add a new and amazing item here! </p>
+<%= form_for([@user, @user.items.build]) do |f| %>
+    <% if @item.errors.any? %>
+        <div class="error_messages">
+          <h2>Form is invalid</h2>
+          <ul>
+            <% @item.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :media_item %><br/>
+      <%= f.text_field :media_item %>
+    </div>
+
+    <div class="field">
+      <%= f.label :active %><br/>
+      <%= f.check_box :active %>
+    </div>
+    <div class="actions"><%= f.submit "Add a new item!" %></div>
+<% end %>

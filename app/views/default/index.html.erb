@@ -1,0 +1,15 @@
+<h2>Amazin user with amazin items to show. All the images with casts came from here!</h2>
+
+<h4>We have <%= pluralize(@users.count, "user") %></h4>
+<h4>We have <%= pluralize(@items, "item") %></h4>
+
+<% unless current_user %>
+    <strong>Register now!</strong>
+    <%= link_to "Register", new_user_path %>
+<% end %>
+
+<p>Check out for this users!!!</p>
+
+<% @users.each do |user| %>
+    <%= link_to user.name, profile_path(user) %>
+<% end %>

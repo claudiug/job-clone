@@ -2,12 +2,20 @@
 <html>
 <head>
   <title>UserItems</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<div class="small">
+  <% if current_user %>
+      Logged in as <%= current_user.email %>.
+      <%= link_to "Log Out", logout_path %>
+  <% else %>
+      <%= link_to "Register", register_path %> or
+      <%= link_to "Log In", login_path %>
+  <% end %>
+</div>
 <%= yield %>
 
 </body>

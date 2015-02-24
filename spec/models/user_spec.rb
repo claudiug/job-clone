@@ -26,7 +26,7 @@ describe User do
     expect(u.errors[:name]).to include("can't be blank")
   end
 
-  it "is invalid with a name bigger than 30 chars" do
+  it 'is invalid with a name bigger than 30 chars' do
     u = build(:user, name: "a"* 31)
     u.valid?
     expect(u.errors[:name]).to include("is too long (maximum is 30 characters)")

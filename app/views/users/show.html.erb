@@ -1,0 +1,28 @@
+<p>Hello <%= @user.name %></p>
+
+<h3>This is your personal profile</h3>
+<div class="note">
+  <p>Until now you have created  <%= pluralize(@user.items.count, "item") %></p>
+</div>
+<div>
+  <%= link_to "public profile", profile_path(@user) %>
+</div>
+<div>
+  <%= link_to "Create new Item", new_user_item_path(@user) %>
+</div>
+
+<p>Search here for your items</p>
+<%= form_tag user_items_path(user_id: @user.id), method: :get do %>
+    <%= label_tag :item %>
+    <%= text_field_tag :item %>
+    <%= submit_tag "Search" %>
+<% end %>
+
+<h3>Here are your items:</h3>
+<% @user.items.each do |item| %>
+    <ul>
+      <%= item.media_item %>
+      <%= link_to item.media_item, user_item_path(@user, item) %>
+      <%= link_to "Edit", edit_user_item_path(@user, item) %>
+    </ul>
+<% end %>

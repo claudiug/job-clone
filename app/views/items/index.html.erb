@@ -1,0 +1,13 @@
+<p>hi, <%= @user.name %></p>
+
+<p>for the query:<strong> <%= params[:item] %> </strong>we found <%= pluralize(@items.count, "item") %></p>
+
+<% @items.each do |item| %>
+    <ul>
+      <li>
+        <%= item.media_item %>
+      </li>
+    </ul>
+<% end %>
+
+<%= link_to "Back to your profile", user_path(@user) %>
