@@ -1,0 +1,53 @@
+== README
+
+This README would normally document whatever steps are necessary to get the
+application up and running.
+
+Things you may want to cover:
+
+* Ruby version
+
+* System dependencies
+
+* Configuration
+
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+Please take about 4 hours to solve it.
+The time aspect is minor and not a hard limit, thus feel free to take more time if you want.
+
+Build a RoR application to manage your media items collection.
+
+It should be possible to create a user account, to sign in and out as a user, a user can manage and search his collection as well as to share it for others to see a visual representation of it.
+
+A media item could either be a link to a video (i.e youtube), image(s), or a link to a website.
+
+For testing I strongly recommend using rspec.
+
+Bonus: Use TDD (should be visible in the git log)
+
+The implementation should be DRY, restful and well-tested - please keep the code minimal and avoid from using scaffolds.
+
+- user
+= name
+= email
+= password
+= active(default:false)
+user has_many: items
+- item
+= media_item
+item belong_to :user
+
+/register
+/login
+/logout
+/:user_id
+/:user_id/items
