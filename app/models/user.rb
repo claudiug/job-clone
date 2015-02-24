@@ -1,0 +1,15 @@
+class User < ActiveRecord::Base
+  has_secure_password
+  EMAIL_FORMAT = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :name, presence: true, length: {maximum: 30}
+  validates :email, presence: true,
+            length: {maximum: 100},
+            format: {with: EMAIL_FORMAT},
+            uniqueness: {case_sensitive: false}
+  validates :password, length: {minimum: 5}
+
+  before_save do
+    self.email = email.downcase
+  end
+
+end
